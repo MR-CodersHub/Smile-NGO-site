@@ -25,12 +25,12 @@ function injectNavbar() {
             </a>
 
             <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="md:hidden text-smile-dark focus:outline-none">
+            <button id="mobileMenuBtn" class="lg:hidden text-smile-dark focus:outline-none">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center gap-8">
+            <div class="hidden lg:flex items-center gap-8">
                 <ul class="flex items-center gap-8 text-sm font-bold tracking-wide text-smile-text uppercase">
                     <li><a href="${pathPrefix}index.html" class="hover:text-smile-red transition relative group">
                         Home
@@ -73,7 +73,7 @@ function injectNavbar() {
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg py-4 px-4 flex-col gap-4">
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100 absolute w-full left-0 top-20 shadow-lg py-4 px-4 flex-col gap-4">
              <a href="${pathPrefix}index.html" class="block py-2 text-smile-text hover:text-smile-red">Home</a>
              <a href="${pathPrefix}public/pages/home-2.html" class="block py-2 text-smile-text hover:text-smile-red">Mission</a>
              <a href="${pathPrefix}public/pages/about.html" class="block py-2 text-smile-text hover:text-smile-red">About</a>
@@ -239,8 +239,8 @@ function injectFooter() {
                 <div>
                      <h4 class="text-lg font-serif font-bold mb-6">Newsletter</h4>
                      <p class="text-sm text-gray-400 mb-4">Subscribe to our newsletter to get latest updates.</p>
-                     <form onsubmit="event.preventDefault(); alert('Subscribed successfully!');" class="space-y-2">
-                        <input type="email" placeholder="Enter your email" class="w-full bg-gray-800 border-none text-white text-sm px-4 py-3 rounded focus:ring-1 focus:ring-smile-red outline-none">
+                     <form id="footerNewsletterForm" class="space-y-2">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email" required class="w-full bg-gray-800 border-none text-white text-sm px-4 py-3 rounded focus:ring-1 focus:ring-smile-red outline-none">
                         <button type="submit" class="w-full bg-smile-red text-white text-sm font-bold px-4 py-3 rounded hover:bg-red-700 transition">SUBSCRIBE</button>
                      </form>
                 </div>
@@ -258,4 +258,18 @@ function injectFooter() {
     `;
 
     document.body.insertAdjacentHTML('beforeend', footerHTML);
+
+    // Auth Listener for Newsletter
+    const newsletterForm = document.getElementById('footerNewsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('newsletterEmail').value;
+            if (window.DataManager) {
+                DataManager.addNewsletterSubscriber(email);
+                alert('Thank you for subscribing!');
+                newsletterForm.reset();
+            }
+        });
+    }
 }

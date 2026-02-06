@@ -17,10 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderAdminDashboard() {
-    // 1. Fetch Data via DataManager (which wraps the strict localStorage keys)
+    // 1. Fetch Data
     const users = DataManager.getUsers();
     const logs = DataManager.getActivityLog();
     const donations = DataManager.getDonations();
+
+    // Update Header with actual admin data
+    const admin = JSON.parse(localStorage.getItem('smile_logged_in_user'));
+    if (admin) {
+        const adminNameEl = document.getElementById('adminHeaderName');
+        const adminAvatarEl = document.getElementById('adminHeaderAvatar');
+        if (adminNameEl) adminNameEl.innerText = admin.name;
+        if (adminAvatarEl) adminAvatarEl.src = `https://ui-avatars.com/api/?name=${admin.name}&background=C92D39&color=fff`;
+    }
+
+    // Mobile Toggle for Admin
+    const mobileBtn = document.getElementById('adminMobileMenuBtn');
+    const sidebar = document.querySelector('aside');
+    if (mobileBtn && sidebar) {
+        mobileBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('inset-0');
+            sidebar.classList.toggle('z-50');
+            sidebar.classList.toggle('w-full');
+        });
+    }
 
     // Stats
     const totalDonations = donations.reduce((sum, d) => sum + d.amount, 0);

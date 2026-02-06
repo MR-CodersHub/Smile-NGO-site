@@ -26,6 +26,19 @@ function handleContactSubmit(e) {
         return;
     }
 
+    // Add to DataManager
+    if (window.DataManager) {
+        DataManager.addContact({
+            id: Date.now(),
+            name,
+            email,
+            phone,
+            message,
+            date: new Date().toISOString(),
+            status: 'New'
+        });
+    }
+
     // Simulate API call
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
