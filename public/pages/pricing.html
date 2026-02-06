@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/style.css">
+</head>
+
+<body class="font-sans text-smile-text bg-white antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar injected -->
+
+    <header class="bg-smile-beige py-20 text-center">
+        <div class="container mx-auto px-4 md:px-8">
+            <span class="text-smile-red font-bold tracking-widest text-xs uppercase mb-4 block">Give Hope</span>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-smile-text mb-6">Choose How You Want to Help</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Every donation, big or small, makes a significant impact.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Plan 1 -->
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition duration-300 border border-gray-100 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-hand-holding-heart text-4xl text-smile-red mb-4"></i>
+                        <h3 class="text-xl font-bold font-serif mb-2">One-Time Donor</h3>
+                        <p class="text-gray-500 text-sm">Make a quick impact today.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-3xl font-bold">$25</span> <span class="text-gray-400">/ minimum</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Provides 10
+                            books</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Feeds a child
+                            for a week</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Tax deductible
+                            receipt</li>
+                    </ul>
+                    <a href="booking.html?amount=25&plan=general"
+                        class="block w-full py-3 text-center border-2 border-smile-red text-smile-red font-bold rounded-lg hover:bg-smile-red hover:text-white transition">DONATE
+                        ONCE</a>
+                </div>
+
+                <!-- Plan 2 (Popular) -->
+                <div
+                    class="bg-white rounded-2xl shadow-xl p-8 transform hover:-translate-y-2 transition duration-300 border-2 border-smile-red relative flex flex-col">
+                    <div
+                        class="absolute top-0 right-0 bg-smile-red text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                        Popular</div>
+                    <div class="mb-6">
+                        <i class="fas fa-calendar-check text-4xl text-smile-red mb-4"></i>
+                        <h3 class="text-xl font-bold font-serif mb-2">Monthly Supporter</h3>
+                        <p class="text-gray-500 text-sm">Sustain our long-term projects.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-3xl font-bold">$50</span> <span class="text-gray-400">/ month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> All One-Time
+                            benefits</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Regular impact
+                            reports</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Quarterly
+                            newsletter</li>
+                    </ul>
+                    <a href="booking.html?amount=50&plan=general"
+                        class="block w-full py-3 text-center bg-smile-red text-white font-bold rounded-lg hover:bg-red-700 transition shadow-lg">JOIN
+                        MONTHLY</a>
+                </div>
+
+                <!-- Plan 3 -->
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition duration-300 border border-gray-100 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-child text-4xl text-smile-red mb-4"></i>
+                        <h3 class="text-xl font-bold font-serif mb-2">Sponsor a Child</h3>
+                        <p class="text-gray-500 text-sm">Change a life completely.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-3xl font-bold">$100</span> <span class="text-gray-400">/ month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Full education
+                            support</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Healthcare &
+                            nutrition</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Personal letters
+                        </li>
+                    </ul>
+                    <a href="booking.html?amount=100&plan=sponsor"
+                        class="block w-full py-3 text-center border-2 border-smile-red text-smile-red font-bold rounded-lg hover:bg-smile-red hover:text-white transition">SPONSOR
+                        NOW</a>
+                </div>
+
+                <!-- Plan 4 -->
+                <div
+                    class="bg-white rounded-2xl shadow-lg p-8 transform hover:-translate-y-2 transition duration-300 border border-gray-100 flex flex-col">
+                    <div class="mb-6">
+                        <i class="fas fa-building text-4xl text-smile-red mb-4"></i>
+                        <h3 class="text-xl font-bold font-serif mb-2">Corporate</h3>
+                        <p class="text-gray-500 text-sm">For businesses and organizations.</p>
+                    </div>
+                    <div class="mb-8">
+                        <span class="text-3xl font-bold">$500+</span> <span class="text-gray-400">/ month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-600 flex-grow">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Brand
+                            partnership</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> CSR
+                            Certification</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Annual Gala
+                            invite</li>
+                    </ul>
+                    <a href="booking.html?amount=500&plan=corporate"
+                        class="block w-full py-3 text-center border-2 border-smile-red text-smile-red font-bold rounded-lg hover:bg-smile-red hover:text-white transition">PARTNER
+                        WITH US</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer injected -->
+
+    <script src="../../src/js/auth.js"></script>
+    <script src="../../src/js/layout.js"></script>
+</body>
+
+</html>

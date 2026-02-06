@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../src/css/style.css">
+    <script src="../src/js/data.js"></script>
+
+</head>
+
+<body class="font-sans text-smile-text bg-smile-beige/50 antialiased min-h-screen flex items-center justify-center">
+
+    <div class="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-4xl flex flex-col md:flex-row relative">
+        <a href="../index.html" class="absolute top-4 left-4 text-gray-400 hover:text-smile-red transition"><i
+                class="fas fa-arrow-left"></i> Back to Home</a>
+
+        <!-- Image Side -->
+        <div class="md:w-1/2 relative bg-smile-red hidden md:block">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply">
+            <div class="relative z-10 h-full flex flex-col justify-end p-12 text-white">
+                <h2 class="text-3xl font-serif font-bold mb-4">Join Our Community</h2>
+                <p class="text-white/80">Become a part of the change. Smile is more than an organization; it's a family.
+                </p>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="md:w-1/2 p-12 flex flex-col justify-center">
+            <div class="text-center mb-8">
+                <div
+                    class="w-12 h-12 bg-smile-red rounded-full flex items-center justify-center text-white text-xl font-serif font-bold mx-auto mb-4">
+                    S</div>
+                <h2 class="text-2xl font-bold font-serif mb-2">Create Account</h2>
+                <p class="text-gray-500 text-sm">Join us as a donor or volunteer.</p>
+            </div>
+
+            <form
+                onsubmit="event.preventDefault(); window.signup(this.name.value, this.email.value, this.password.value);"
+                class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2">Full Name</label>
+                    <input type="text" name="name"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-smile-red transition"
+                        placeholder="John Doe">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2">Email Address</label>
+                    <input type="email" name="email"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-smile-red transition"
+                        placeholder="you@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2">Password</label>
+                    <input type="password" name="password"
+                        class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 focus:outline-none focus:ring-1 focus:ring-smile-red transition"
+                        placeholder="••••••••">
+                </div>
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                    <input type="checkbox" required class="rounded text-smile-red focus:ring-smile-red">
+                    <span>I agree to the <a href="../public/pages/terms-of-service.html"
+                            class="underline hover:text-smile-red">Terms</a> and <a
+                            href="../public/pages/privacy-policy.html" class="underline hover:text-smile-red">Privacy
+                            Policy</a></span>
+                </div>
+                <button type="submit"
+                    class="w-full bg-smile-red text-white font-bold py-3 rounded-lg hover:bg-red-700 transition shadow-lg">
+                    SIGN UP
+                </button>
+
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-200"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Or sign up with</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" onclick="alert('Google Signup - Coming Soon')"
+                        class="flex items-center justify-center gap-2 w-full border border-gray-200 rounded-lg py-2.5 text-sm font-bold text-gray-700 hover:bg-gray-50 transition">
+                        <i class="fab fa-google text-red-500"></i> Google
+                    </button>
+                    <button type="button" onclick="alert('Apple Signup - Coming Soon')"
+                        class="flex items-center justify-center gap-2 w-full border border-gray-200 rounded-lg py-2.5 text-sm font-bold text-gray-700 hover:bg-gray-50 transition">
+                        <i class="fab fa-apple text-black"></i> Apple
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="mt-8 text-center text-sm text-gray-500">
+                Already have an account? <a href="login.html" class="text-smile-red font-bold hover:underline">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/auth.js"></script>
+</body>
+
+</html>

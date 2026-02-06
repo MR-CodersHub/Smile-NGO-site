@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/style.css">
+</head>
+
+<body class="font-sans text-smile-text bg-white antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar injected -->
+
+    <section class="py-20 bg-smile-beige/30">
+        <div class="container mx-auto px-4 md:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold text-smile-text mb-4">Frequently Asked Questions</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Find answers to common questions about our mission, donations,
+                and volunteer programs.</p>
+        </div>
+    </section>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4 md:px-8 max-w-3xl">
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group">
+                    <button
+                        class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition focus:outline-none"
+                        onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                        <span class="font-bold text-lg">How is my donation used?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition transform"></i>
+                    </button>
+                    <div class="hidden p-6 border-t border-gray-100 bg-gray-50 text-gray-600 leading-relaxed">
+                        85% of every dollar goes directly to our programs in healthcare, education, and nutrition. The
+                        remaining 15% covers administrative costs and fundraising efforts to sustain our mission.
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group">
+                    <button
+                        class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition focus:outline-none"
+                        onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                        <span class="font-bold text-lg">Is my donation tax-deductible?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition transform"></i>
+                    </button>
+                    <div class="hidden p-6 border-t border-gray-100 bg-gray-50 text-gray-600 leading-relaxed">
+                        Yes, Smile NGO is a registered 501(c)(3) non-profit organization. All donations are
+                        tax-deductible to the extent allowed by law. You will receive an annual receipt.
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group">
+                    <button
+                        class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition focus:outline-none"
+                        onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                        <span class="font-bold text-lg">Can I sponsor a specific child?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition transform"></i>
+                    </button>
+                    <div class="hidden p-6 border-t border-gray-100 bg-gray-50 text-gray-600 leading-relaxed">
+                        Yes! Our Child Sponsorship program allows you to support a specific child, providing them with
+                        education, food, and healthcare. You will receive regular updates on their progress.
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden group">
+                    <button
+                        class="w-full flex items-center justify-between p-6 text-left bg-white hover:bg-gray-50 transition focus:outline-none"
+                        onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('i').classList.toggle('rotate-180')">
+                        <span class="font-bold text-lg">How can I volunteer?</span>
+                        <i class="fas fa-chevron-down text-gray-400 transition transform"></i>
+                    </button>
+                    <div class="hidden p-6 border-t border-gray-100 bg-gray-50 text-gray-600 leading-relaxed">
+                        We have programs in South Africa, India, and more. Visit our Contact page to apply, or check the
+                        Volunteer section on the home page for specific opportunities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer injected -->
+
+    <script src="../../src/js/auth.js"></script>
+    <script src="../../src/js/layout.js"></script>
+</body>
+
+</html>

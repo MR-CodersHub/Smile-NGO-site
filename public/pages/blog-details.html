@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Details - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/style.css">
+    <script src="../../src/js/data.js"></script>
+</head>
+
+<body class="font-sans text-smile-text antialiased overflow-x-hidden bg-white">
+
+    <!-- Navbar injected -->
+
+    <main id="mainArticle" class="min-h-screen pt-20">
+        <!-- Content Injected Here -->
+    </main>
+
+    <!-- Footer injected -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            const post = DataManager.getBlogById(id);
+
+            if (!post) {
+                document.getElementById('mainArticle').innerHTML = `
+                    <div class="h-screen flex items-center justify-center flex-col">
+                        <h2 class="text-4xl font-serif font-bold mb-4">Story Not Found</h2>
+                        <a href="blog.html" class="text-smile-red underline">Return to Stories</a>
+                    </div>
+                 `;
+                return;
+            }
+
+            DataManager.logActivity(`Read story: ${post.title}`);
+
+            const html = `
+                <article class="max-w-4xl mx-auto px-6 py-12">
+                    <div class="text-center mb-12">
+                         <span class="text-smile-red font-bold tracking-widest text-xs uppercase mb-4 block">${post.category}</span>
+                         <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6 leading-tight text-smile-dark">${post.title}</h1>
+                         
+                         <div class="flex items-center justify-center gap-6 text-sm text-gray-500">
+                             <div class="flex items-center gap-2">
+                                 <img src="https://ui-avatars.com/api/?name=${post.author}&background=random" class="w-8 h-8 rounded-full">
+                                 <span>${post.author}</span>
+                             </div>
+                             <span>•</span>
+                             <span>${post.date}</span>
+                         </div>
+                    </div>
+                    
+                    <div class="rounded-[2rem] overflow-hidden mb-12 shadow-xl">
+                        <img src="${post.image}" class="w-full h-auto max-h-[600px] object-cover">
+                    </div>
+                    
+                    <div class="prose prose-lg mx-auto text-gray-700 leading-relaxed space-y-6">
+                        ${post.content}
+                    </div>
+                    
+                    <div class="border-t border-gray-100 mt-16 pt-12">
+                        <h3 class="font-serif font-bold text-2xl mb-6">Share this story</h3>
+                        <div class="flex gap-4">
+                            <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#3b5998] hover:text-white hover:border-transparent transition"><i class="fab fa-facebook-f"></i></button>
+                            <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#1da1f2] hover:text-white hover:border-transparent transition"><i class="fab fa-twitter"></i></button>
+                            <button class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#25d366] hover:text-white hover:border-transparent transition"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Related Stories (Simple fallback logic) -->
+                <section class="bg-gray-50 py-20 mt-12">
+                    <div class="container mx-auto px-6 max-w-6xl">
+                        <h3 class="font-serif font-bold text-3xl mb-12">More Stories</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                             <!-- We'll just show the first 3 blogs again for demo connectivity -->
+                             ${DataManager.getBlogs().filter(b => b.id !== post.id).slice(0, 3).map(b => `
+                                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                                    <div class="text-xs font-bold text-smile-red mb-2 uppercase">${b.category}</div>
+                                    <h4 class="font-serif font-bold text-xl mb-2"><a href="blog-details.html?id=${b.id}" class="hover:text-smile-red">${b.title}</a></h4>
+                                    <p class="text-gray-500 text-sm line-clamp-2">${b.excerpt}</p>
+                                </div>
+                             `).join('')}
+                        </div>
+                    </div>
+                </section>
+             `;
+
+            document.getElementById('mainArticle').innerHTML = html;
+        });
+    </script>
+
+    <script src="../../src/js/auth.js"></script>
+    <script src="../../src/js/layout.js"></script>
+</body>
+
+</html>

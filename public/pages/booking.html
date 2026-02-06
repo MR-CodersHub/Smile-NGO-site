@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Donation - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/style.css">
+    <script src="../../src/js/data.js"></script>
+</head>
+
+<body class="font-sans text-smile-text bg-smile-beige antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar injected -->
+
+    <main class="flex-grow pt-20">
+        <div class="container mx-auto px-4 md:px-8 py-12">
+            <div class="max-w-3xl mx-auto bg-white rounded-[2rem] shadow-xl overflow-hidden border border-gray-100">
+
+                <!-- Header -->
+                <div class="bg-smile-red p-10 text-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20">
+                    </div>
+                    <span
+                        class="relative z-10 bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block backdrop-blur">Secure
+                        Donation</span>
+                    <h1 class="relative z-10 text-3xl md:text-4xl font-serif font-bold text-white mb-2">Confirm Your
+                        Impact</h1>
+                    <p class="relative z-10 text-white/80">Thank you for successfuly choosing to help.</p>
+                </div>
+
+                <!-- Form -->
+                <div class="p-10 md:p-14">
+                    <form id="donationForm" class="space-y-8">
+
+                        <!-- Donation Details -->
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 mb-6">
+                            <h3 class="font-bold text-lg mb-4 text-smile-dark border-b border-gray-200 pb-2">Donation
+                                Summary</h3>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label
+                                        class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Amount
+                                        ($)</label>
+                                    <input type="number" id="amountInput"
+                                        class="w-full text-2xl font-bold text-smile-red bg-transparent border-b-2 border-gray-200 focus:border-smile-red outline-none transition py-1"
+                                        value="25">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Cause
+                                        / Plan</label>
+                                    <select id="causeInput"
+                                        class="w-full bg-transparent font-bold text-gray-700 border-b-2 border-gray-200 focus:border-smile-red outline-none transition py-2 h-10">
+                                        <option value="General Fund">General Fund</option>
+                                        <option value="Education for All">Education for All</option>
+                                        <option value="Clean Water Initiative">Clean Water Initiative</option>
+                                        <option value="Medical Aid">Medical Aid</option>
+                                        <option value="Sponsor a Child">Sponsor a Child (Monthly)</option>
+                                        <option value="Corporate Partner">Corporate Partner</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">First Name</label>
+                                <input type="text" id="nameInput" required
+                                    class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none focus:border-smile-red focus:bg-white transition"
+                                    placeholder="John">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="emailInput" required
+                                    class="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 outline-none focus:border-smile-red focus:bg-white transition"
+                                    placeholder="you@example.com">
+                            </div>
+                        </div>
+
+                        <!-- Payment Method (Mock) -->
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-4">Payment Method</label>
+                            <div class="grid grid-cols-3 gap-4">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" class="peer sr-only" checked>
+                                    <div
+                                        class="border border-gray-200 rounded-lg p-4 text-center peer-checked:border-smile-red peer-checked:bg-red-50 hover:bg-gray-50 transition">
+                                        <i class="fas fa-credit-card text-xl mb-2 text-gray-600"></i>
+                                        <span class="block text-xs font-bold">Card</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" class="peer sr-only">
+                                    <div
+                                        class="border border-gray-200 rounded-lg p-4 text-center peer-checked:border-smile-red peer-checked:bg-red-50 hover:bg-gray-50 transition">
+                                        <i class="fab fa-paypal text-xl mb-2 text-blue-600"></i>
+                                        <span class="block text-xs font-bold">PayPal</span>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="payment" class="peer sr-only">
+                                    <div
+                                        class="border border-gray-200 rounded-lg p-4 text-center peer-checked:border-smile-red peer-checked:bg-red-50 hover:bg-gray-50 transition">
+                                        <i class="fab fa-google-pay text-xl mb-2 text-gray-600"></i>
+                                        <span class="block text-xs font-bold">GPay</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit"
+                                class="w-full bg-smile-red text-white font-bold py-4 rounded-xl shadow-heavy hover:bg-red-700 transition transform hover:-translate-y-1 flex justify-center items-center gap-2">
+                                <span>Complete Donation</span>
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <p class="text-center text-xs text-gray-400 mt-4">
+                                <i class="fas fa-lock text-green-500 mr-1"></i> 256-bit SSL Secure Payment
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer injected -->
+
+    <script src="../../src/js/auth.js"></script>
+    <script src="../../src/js/layout.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Prefill from URL
+            const params = new URLSearchParams(window.location.search);
+            const amount = params.get('amount');
+            const plan = params.get('plan');
+
+            if (amount) document.getElementById('amountInput').value = amount;
+
+            // Map plan ID to readable text if needed, or select dropdown
+            const dropdown = document.getElementById('causeInput');
+            if (plan) {
+                // Simple text matching
+                for (let i = 0; i < dropdown.options.length; i++) {
+                    if (dropdown.options[i].value.toLowerCase().includes(plan.toLowerCase())) {
+                        dropdown.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            // 2. Prefill User if logged in
+            const user = JSON.parse(localStorage.getItem('smile_logged_in_user'));
+            if (user) {
+                document.getElementById('nameInput').value = user.name;
+                document.getElementById('emailInput').value = user.email;
+            }
+        });
+
+        document.getElementById('donationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const amount = parseFloat(document.getElementById('amountInput').value);
+            const cause = document.getElementById('causeInput').value;
+            const donorEmail = document.getElementById('emailInput').value;
+
+            // Add to DataManager
+            // Add to DataManager
+            const newDonation = {
+                id: '#DON-' + Math.floor(Math.random() * 10000),
+                date: new Date().toLocaleDateString(), // Keep for display, or use ISO
+                amount: amount,
+                cause: cause,
+                status: 'Success',
+                donorEmail: donorEmail
+            };
+
+            DataManager.addDonation(newDonation);
+
+            // If user isn't logged in, logging them in or creating account would be ideal, 
+            // but for now we follow the simple flow.
+
+            alert(`Thank you! Your donation of $${amount} for ${cause} was successful.`);
+
+            // Redirect
+            const user = JSON.parse(localStorage.getItem('smile_logged_in_user'));
+            if (user && user.email === donorEmail) {
+                window.location.href = '../../auth/user/user-dashboard.html';
+            } else {
+                window.location.href = '../../index.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

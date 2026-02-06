@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Stories - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/style.css">
+    <script src="../../src/js/data.js"></script>
+</head>
+
+<body class="font-sans text-smile-text antialiased overflow-x-hidden bg-smile-beige">
+
+    <!-- Navbar injected -->
+
+    <header class="bg-smile-beige-dark py-20 text-center relative overflow-hidden">
+        <div class="container mx-auto px-4 relative z-10">
+            <span class="text-smile-red font-bold tracking-widest text-xs uppercase mb-4 block">The Blog</span>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6 text-smile-dark">Stories from the Field</h1>
+
+            <!-- Filter Bar -->
+            <div
+                class="max-w-2xl mx-auto bg-white p-2 rounded-full shadow-sm flex items-center justify-between border border-gray-200 mt-10">
+                <input type="text" placeholder="Search stories..."
+                    class="flex-grow px-6 bg-transparent outline-none text-gray-600">
+                <button
+                    class="w-10 h-10 bg-smile-red text-white rounded-full flex items-center justify-center hover:bg-red-700 transition"><i
+                        class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- JS Populated -->
+                <div class="col-span-full text-center py-20 text-gray-400">Loading stories...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer injected -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogs = DataManager.getBlogs();
+            const grid = document.getElementById('blogGrid');
+
+            if (blogs.length === 0) {
+                grid.innerHTML = '<p class="text-center col-span-full">No stories found.</p>';
+                return;
+            }
+
+            grid.innerHTML = blogs.map(b => `
+                <article class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl mb-6">
+                        <img src="${b.image}" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-smile-dark uppercase tracking-wide">
+                            ${b.category}
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 text-xs text-gray-400 mb-3">
+                        <span><i class="far fa-calendar mr-1"></i> ${b.date}</span>
+                        <span><i class="far fa-user mr-1"></i> ${b.author}</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-serif font-bold mb-3 group-hover:text-smile-red transition">
+                        <a href="blog-details.html?id=${b.id}">${b.title}</a>
+                    </h3>
+                    <p class="text-gray-500 leading-relaxed mb-4 line-clamp-2">${b.excerpt}</p>
+                    
+                    <a href="blog-details.html?id=${b.id}" class="text-smile-red font-bold text-sm hover:underline">Read Story <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+                </article>
+             `).join('');
+        });
+    </script>
+
+    <script src="../../src/js/auth.js"></script>
+    <script src="../../src/js/layout.js"></script>
+</body>
+
+</html>

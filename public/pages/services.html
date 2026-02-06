@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Causes - Smile NGO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../src/js/tailwind-config.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../src/css/style.css">
+
+    <!-- Data Source -->
+    <script src="../../src/js/data.js"></script>
+</head>
+
+<body class="font-sans text-smile-text antialiased overflow-x-hidden bg-smile-beige">
+
+    <!-- Navbar injected -->
+
+    <header class="bg-smile-dark py-20 text-center text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <span class="text-smile-red font-bold tracking-widest text-xs uppercase mb-4 block">Our Missions</span>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">Explore Our Causes</h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">Select a cause to see how you can make a tangible
+                difference.</p>
+        </div>
+    </header>
+
+    <section class="py-20">
+        <div class="container mx-auto px-4 md:px-8">
+            <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS Generated Content -->
+                <div class="col-span-full text-center py-20 text-gray-400">Loading causes...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer injected -->
+
+    <!-- Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const services = DataManager.getServices();
+            const grid = document.getElementById('servicesGrid');
+
+            if (services.length === 0) {
+                grid.innerHTML = '<p class="text-center col-span-full">No services found.</p>';
+                return;
+            }
+
+            grid.innerHTML = services.map(s => {
+                const percent = Math.round((s.raised / s.goal) * 100);
+                return `
+                    <div class="bg-white rounded-[2rem] shadow-soft hover:shadow-card transition duration-500 overflow-hidden group border border-gray-100 flex flex-col h-full">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="${s.image}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-smile-red shadow-sm">
+                                ${s.category}
+                            </div>
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-serif font-bold mb-3 group-hover:text-smile-red transition">
+                                <a href="service-details.html?id=${s.id}">${s.title}</a>
+                            </h3>
+                            <p class="text-gray-500 mb-6 text-sm leading-relaxed">${s.shortDesc}</p>
+                            
+                            <div class="mt-auto">
+                                <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                                    <span>Raised: $${s.raised.toLocaleString()}</span>
+                                    <span>Goal: $${s.goal.toLocaleString()}</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden mb-6">
+                                    <div class="h-full bg-smile-red transition-all duration-1000" style="width: ${percent}%"></div>
+                                </div>
+                                
+                                <a href="service-details.html?id=${s.id}" class="block w-full text-center py-3 border border-smile-red text-smile-red font-bold rounded-xl hover:bg-smile-red hover:text-white transition">
+                                    View Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                 `;
+            }).join('');
+        });
+    </script>
+
+    <script src="../../src/js/auth.js"></script>
+    <script src="../../src/js/layout.js"></script>
+</body>
+
+</html>
