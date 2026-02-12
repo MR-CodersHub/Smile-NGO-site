@@ -64,6 +64,36 @@ const DEFAULT_SERVICES = [
             { label: 'Meals Served', value: '1M+' },
             { label: 'Farms Started', value: '85' }
         ]
+    },
+    {
+        id: 'women-empowerment',
+        title: 'Women Empowerment',
+        icon: 'fa-female',
+        shortDesc: 'Empowering women through vocational training, microfinance, and leadership programs.',
+        fullDesc: 'When you empower a woman, you empower an entire community. Our Women Empowerment program provides vocational skills training in tailoring, handicrafts, and entrepreneurship. We offer microloans to help women start their own businesses and become financially independent. Through leadership workshops and mentorship programs, we help women break barriers and become change-makers in their communities.',
+        image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+        goal: 80000,
+        raised: 38500,
+        category: 'Empowerment',
+        impactStats: [
+            { label: 'Women Trained', value: '3,200+' },
+            { label: 'Businesses Started', value: '450' }
+        ]
+    },
+    {
+        id: 'disaster-relief',
+        title: 'Emergency Disaster Relief',
+        icon: 'fa-hands-helping',
+        shortDesc: 'Rapid response teams providing immediate aid during natural disasters and humanitarian crises.',
+        fullDesc: 'When disaster strikes, every second counts. Our Emergency Disaster Relief program deploys rapid response teams to provide immediate assistance to affected communities. We distribute emergency supplies including food, clean water, shelter materials, and medical aid. Our teams work around the clock to ensure that no family is left behind during their darkest hours. We also focus on long-term recovery, helping communities rebuild stronger and more resilient.',
+        image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+        goal: 120000,
+        raised: 95000,
+        category: 'Relief',
+        impactStats: [
+            { label: 'Families Assisted', value: '8,500+' },
+            { label: 'Relief Missions', value: '42' }
+        ]
     }
 ];
 

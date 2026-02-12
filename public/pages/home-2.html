@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Mission - Smile NGO</title>
+    <link rel="icon" href="../../assets/img/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../../src/js/tailwind-config.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -179,22 +180,24 @@
     </section>
 
     <!-- Impact Story / Quote -->
-    <section class="py-24 bg-cover bg-fixed relative"
+    <section id="mission-testimonial-section" class="py-24 bg-cover bg-fixed relative transition-all duration-1000"
         style="background-image: url('https://images.unsplash.com/photo-1542810634-71277d95dc24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
         <div class="absolute inset-0 bg-smile-dark/80"></div>
         <div
             class="container mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center justify-center text-center py-12">
             <i class="fas fa-quote-left text-6xl text-smile-red/50 mb-8"></i>
-            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight max-w-4xl">
+            <h2 id="mission-testimonial-text"
+                class="text-3xl md:text-5xl font-serif font-bold text-white mb-8 leading-tight max-w-4xl transition-all duration-500">
                 "Before the well, my children were always sick. Now, they are healthy, clean, and happy. Water is not
                 just a drink; it is a blessing."
             </h2>
-            <div class="flex items-center gap-4">
-                <img src="https://ui-avatars.com/api/?name=Amina+K&background=random"
+            <div id="mission-testimonial-author-box" class="flex items-center gap-4 transition-all duration-500">
+                <img id="mission-testimonial-image" src="https://ui-avatars.com/api/?name=Amina+K&background=random"
                     class="w-16 h-16 rounded-full border-4 border-smile-red">
                 <div class="text-left">
-                    <span class="block text-white font-bold text-lg">Amina K.</span>
-                    <span class="block text-gray-400 text-sm">Village Elder, Tanzania</span>
+                    <span id="mission-testimonial-author" class="block text-white font-bold text-lg">Amina K.</span>
+                    <span id="mission-testimonial-role" class="block text-gray-400 text-sm">Village Elder,
+                        Tanzania</span>
                 </div>
             </div>
         </div>
@@ -229,6 +232,7 @@
 
     <script src="../../src/js/auth.js"></script>
     <script src="../../src/js/layout.js"></script>
+    <script src="../../src/js/mission-testimonials.js"></script>
     <script>
         // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {

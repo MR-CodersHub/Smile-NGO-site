@@ -17,7 +17,7 @@ function injectNavbar() {
         <div class="container mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
             <!-- Logo -->
             <a href="${pathPrefix}index.html" class="flex items-center gap-2 group">
-                 <img src="${pathPrefix}assets/img/logo.png" onerror="this.src='https://via.placeholder.com/40x40/C92D39/FFFFFF?text=S'" alt="Logo" class="w-10 h-10 object-contain">
+                 <img src="${pathPrefix}assets/img/logo.png" onerror="this.src='https://via.placeholder.com/40x40/C92D39/FFFFFF?text=S" alt="Logo" class="w-10 h-10 object-contain">
                 <div class="flex flex-col">
                     <span class="text-xl font-serif font-bold text-smile-text leading-none">Smile</span>
                     <span class="text-[10px] tracking-widest text-smile-grey uppercase">Charity Organization</span>
@@ -78,7 +78,7 @@ function injectNavbar() {
              <a href="${pathPrefix}public/pages/home-2.html" class="block py-2 text-smile-text hover:text-smile-red">Mission</a>
              <a href="${pathPrefix}public/pages/about.html" class="block py-2 text-smile-text hover:text-smile-red">About</a>
              <a href="${pathPrefix}public/pages/services.html" class="block py-2 text-smile-text hover:text-smile-red">Causes</a>
-             <a href="${pathPrefix}public/pages/blog.html" class="block py-2 text-smile-text hover:text-smile-red">Blog</a>
+             <a href="${pathPrefix}public/pages/blog.html" class="block py-2 text-smile-text hover:text-smile-red">Stories</a>
              <a href="${pathPrefix}public/pages/contact.html" class="block py-2 text-smile-text hover:text-smile-red">Contact</a>
              <div id="mobileAuthContainer" class="pt-4 border-t border-gray-100 flex flex-col gap-3">
              </div>
@@ -100,6 +100,41 @@ function injectNavbar() {
             menu.classList.toggle('hidden');
         });
     }
+
+    highlightActiveLink();
+}
+
+function highlightActiveLink() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('#mainNavbar a');
+    const mobileLinks = document.querySelectorAll('#mobileMenu a');
+
+    const allLinks = [...navLinks, ...mobileLinks];
+
+    allLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Extract filename from href and current path
+        const hrefFile = href.split('/').pop().replace('.html', '') || 'index';
+        const pathFile = currentPath.split('/').pop().replace('.html', '') || 'index';
+
+        if (hrefFile === pathFile) {
+            // Desktop active state
+            if (link.closest('.lg\\:flex')) {
+                link.classList.add('text-smile-red');
+                const underline = link.querySelector('span');
+                if (underline) {
+                    underline.classList.remove('w-0');
+                    underline.classList.add('w-full');
+                }
+            }
+            // Mobile active state
+            if (link.closest('#mobileMenu')) {
+                link.classList.add('text-smile-red', 'font-bold', 'border-l-2', 'border-smile-red', 'pl-2');
+            }
+        }
+    });
 }
 
 function updateAuthUI(pathPrefix) {
@@ -195,10 +230,14 @@ function injectFooter() {
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <!-- Brand -->
                 <div>
-                     <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8 bg-smile-red rounded-full flex items-center justify-center text-white font-serif font-bold">S</div>
-                        <span class="text-xl font-serif font-bold">Smile</span>
-                    </div>
+                
+                     <a href="${pathPrefix}index.html" class="flex items-center gap-2 group">
+                 <img src="${pathPrefix}assets/img/logo.png" onerror="this.src='https://via.placeholder.com/40x40/C92D39/FFFFFF?text=S" alt="Logo" class="w-10 h-10 object-contain">
+                <div class="flex flex-col">
+                    <span class="text-xl font-serif font-bold text-white leading-none">Smile</span>
+                    <span class="text-[10px] tracking-widest text-gray-300 uppercase">Charity Organization</span>
+                </div>
+            </a><br>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6">
                         Dedicated to child welfare, education support, and community upliftment. Join us in making the world a better place, one smile at a time.
                     </p>

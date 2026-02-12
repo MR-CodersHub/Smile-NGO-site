@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Stories - Smile NGO</title>
+    <link rel="icon" href="../../assets/img/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="../../src/js/tailwind-config.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../src/css/style.css">
-    <script src="../../src/js/data.js"></script>
 </head>
 
 <body class="font-sans text-smile-text antialiased overflow-x-hidden bg-smile-beige">
@@ -42,62 +42,150 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-smile-beige-dark">
+        <div class="container mx-auto px-4 md:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <i class="fas fa-envelope-open-text text-5xl text-smile-red mb-6"></i>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-smile-dark mb-4">Stay Inspired</h2>
+                <p class="text-gray-600 mb-8 text-lg">Get monthly stories of hope, impact updates, and ways you can help
+                    delivered straight to your inbox.</p>
+
+                <form class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto">
+                    <input type="email" placeholder="Enter your email address"
+                        class="flex-grow px-6 py-4 rounded-full border border-gray-300 outline-none focus:border-smile-red transition">
+                    <button type="submit"
+                        class="px-8 py-4 bg-smile-red text-white font-bold rounded-full hover:bg-red-700 transition shadow-lg whitespace-nowrap">
+                        Subscribe Now
+                    </button>
+                </form>
+
+                <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe anytime.</p>
+
+                <div class="mt-12 flex flex-wrap justify-center gap-4">
+                    <span
+                        class="px-4 py-2 bg-white rounded-full text-sm text-gray-600 border border-gray-200">#WaterForAll</span>
+                    <span
+                        class="px-4 py-2 bg-white rounded-full text-sm text-gray-600 border border-gray-200">#EducationMatters</span>
+                    <span
+                        class="px-4 py-2 bg-white rounded-full text-sm text-gray-600 border border-gray-200">#HealthcareAccess</span>
+                    <span
+                        class="px-4 py-2 bg-white rounded-full text-sm text-gray-600 border border-gray-200">#CommunityFirst</span>
+                    <span
+                        class="px-4 py-2 bg-white rounded-full text-sm text-gray-600 border border-gray-200">#HopeRestored</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivational CTA -->
+    <section class="py-20 bg-smile-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+        </div>
+        <div class="container mx-auto px-4 md:px-8 text-center relative z-10">
+            <blockquote class="max-w-4xl mx-auto">
+                <i class="fas fa-quote-left text-4xl text-smile-red/50 mb-6"></i>
+                <p class="text-3xl md:text-4xl font-serif italic mb-8 leading-relaxed">
+                    "Everyone can be great, because anyone can serve."
+                </p>
+                <footer class="text-gray-400">— Martin Luther King Jr.</footer>
+            </blockquote>
+
+            <div class="mt-12">
+                <a href="../pages/contact.html"
+                    class="inline-block px-10 py-4 bg-smile-red text-white font-bold rounded-full hover:bg-red-700 transition shadow-heavy transform hover:-translate-y-1">
+                    Join Our Volunteer Program
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer injected -->
 
+    <script src="../../src/js/data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const blogs = DataManager.getBlogs();
-            const grid = document.getElementById('blogGrid');
-            const searchInput = document.querySelector('input[type="text"]');
+            try {
+                console.log('Blog page loaded');
+                console.log('DataManager:', typeof DataManager);
 
-            function renderBlogs(filteredBlogs) {
-                if (filteredBlogs.length === 0) {
-                    grid.innerHTML = '<p class="text-center col-span-full py-20 text-gray-500 font-serif">No stories found matching your search.</p>';
+                if (typeof DataManager === 'undefined') {
+                    console.error('DataManager is not defined!');
+                    document.getElementById('blogGrid').innerHTML = '<p class="text-center col-span-full py-20 text-red-500">Error: Data manager not loaded</p>';
                     return;
                 }
 
-                grid.innerHTML = filteredBlogs.map(b => `
-                    <article class="group cursor-pointer reveal">
-                        <div class="relative overflow-hidden rounded-2xl mb-6">
-                            <img src="${b.image}" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700">
-                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-smile-dark uppercase tracking-wide">
-                                ${b.category}
+                const blogs = DataManager.getBlogs();
+                console.log('Blogs:', blogs);
+
+                const grid = document.getElementById('blogGrid');
+                const searchInput = document.querySelector('input[type="text"]');
+
+                function renderBlogs(filteredBlogs) {
+                    if (filteredBlogs.length === 0) {
+                        grid.innerHTML = '<p class="text-center col-span-full py-20 text-gray-500 font-serif">No stories found matching your search.</p>';
+                        return;
+                    }
+
+                    grid.innerHTML = filteredBlogs.map(b => `
+                        <article class="group cursor-pointer">
+                            <div class="relative overflow-hidden rounded-2xl mb-6">
+                                <img src="${b.image}" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700">
+                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-smile-dark uppercase tracking-wide">
+                                    ${b.category}
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                            <span><i class="far fa-calendar mr-1"></i> ${b.date}</span>
-                            <span><i class="far fa-user mr-1"></i> ${b.author}</span>
-                        </div>
-                        
-                        <h3 class="text-2xl font-serif font-bold mb-3 group-hover:text-smile-red transition">
-                            <a href="blog-details.html?id=${b.id}">${b.title}</a>
-                        </h3>
-                        <p class="text-gray-500 leading-relaxed mb-4 line-clamp-2">${b.excerpt}</p>
-                        
-                        <a href="blog-details.html?id=${b.id}" class="text-smile-red font-bold text-sm hover:underline">Read Story <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
-                    </article>
-                `).join('');
-            }
+                            
+                            <div class="flex items-center gap-4 text-xs text-gray-400 mb-3">
+                                <span><i class="far fa-calendar mr-1"></i> ${b.date}</span>
+                                <span><i class="far fa-user mr-1"></i> ${b.author}</span>
+                            </div>
+                            
+                            <h3 class="text-2xl font-serif font-bold mb-3 group-hover:text-smile-red transition">
+                                <a href="blog-details.html?id=${b.id}">${b.title}</a>
+                            </h3>
+                            <p class="text-gray-500 leading-relaxed mb-4 line-clamp-2">${b.excerpt}</p>
+                            
+                            <a href="blog-details.html?id=${b.id}" class="text-smile-red font-bold text-sm hover:underline">Read Story <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+                        </article>
+                    `).join('');
+                }
 
-            renderBlogs(blogs);
+                renderBlogs(blogs);
 
-            if (searchInput) {
-                searchInput.addEventListener('input', (e) => {
-                    const query = e.target.value.toLowerCase();
-                    const filtered = blogs.filter(b =>
-                        b.title.toLowerCase().includes(query) ||
-                        b.category.toLowerCase().includes(query) ||
-                        b.excerpt.toLowerCase().includes(query)
-                    );
-                    renderBlogs(filtered);
-                });
+                if (searchInput) {
+                    searchInput.addEventListener('input', (e) => {
+                        const query = e.target.value.toLowerCase();
+                        const filtered = blogs.filter(b =>
+                            b.title.toLowerCase().includes(query) ||
+                            b.category.toLowerCase().includes(query) ||
+                            b.excerpt.toLowerCase().includes(query)
+                        );
+                        renderBlogs(filtered);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+                document.getElementById('blogGrid').innerHTML = '<p class="text-center col-span-full py-20 text-red-500">Error loading stories: ' + error.message + '</p>';
             }
         });
     </script>
 
     <script src="../../src/js/auth.js"></script>
     <script src="../../src/js/layout.js"></script>
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
