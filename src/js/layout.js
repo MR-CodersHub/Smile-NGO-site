@@ -247,11 +247,11 @@ function injectFooter() {
                 <div>
                     <h4 class="text-lg font-serif font-bold mb-6">Quick Links</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="${pathPrefix}public/pages/home-2.html" class="hover:text-smile-red transition">Mission</a></li>
                         <li><a href="${pathPrefix}public/pages/about.html" class="hover:text-smile-red transition">About Us</a></li>
                         <li><a href="${pathPrefix}public/pages/services.html" class="hover:text-smile-red transition">Our Causes</a></li>
                         <li><a href="${pathPrefix}public/pages/blog.html" class="hover:text-smile-red transition">Latest News</a></li>
                         <li><a href="${pathPrefix}public/pages/contact.html" class="hover:text-smile-red transition">Contact</a></li>
-                        <li><a href="${pathPrefix}public/pages/faq.html" class="hover:text-smile-red transition">FAQ</a></li>
                     </ul>
                 </div>
 
@@ -288,6 +288,7 @@ function injectFooter() {
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
                 <p>&copy; 2024 Smile NGO. All rights reserved.</p>
                 <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="${pathPrefix}public/pages/faq.html" class="hover:text-white transition">FAQ</a>
                     <a href="${pathPrefix}public/pages/privacy-policy.html" class="hover:text-white transition">Privacy Policy</a>
                     <a href="${pathPrefix}public/pages/terms-of-service.html" class="hover:text-white transition">Terms of Service</a>
                 </div>
